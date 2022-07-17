@@ -39,7 +39,7 @@ export default {
     onSubmit (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$router.push('hello')
+          this.$router.push('index')
         } else {
           return false
         }
