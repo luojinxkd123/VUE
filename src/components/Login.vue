@@ -63,7 +63,7 @@ export default {
   .login {
     padding: 3% 3% 3% 3%;
     /*圆润*/
-    -webkit-border-radius: 10px;
+    border-radius: 10px;
     /*影效*/
     box-shadow: 0 0 25px #c1a0ff;
     width: 18%;
