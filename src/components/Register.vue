@@ -1,16 +1,15 @@
 <template>
   <div class="bg">
-    <div class="login">
-      <h2>登录</h2>
-      <el-form ref="loginForm" :model="user" :rules="rules">
+    <div class="reg">
+      <h2>注册</h2>
+      <el-form ref="registerForm" :model="register" :rules="rules">
         <el-form-item label="账号" class="item" prop="username">
-          <el-input  v-model="user.username" placeholder="请输入账号"></el-input>
+          <el-input  v-model="register.username" placeholder="请输入账号"></el-input>
         </el-form-item>
         <el-form-item label="密码" class="item" prop="password">
-          <el-input  v-model="user.password" placeholder="请输入密码" show-password></el-input>
+          <el-input  v-model="register.password" placeholder="请输入密码" show-password></el-input>
         </el-form-item>
-        <el-button type="primary" v-on:click="onSubmit('loginForm')" >登录</el-button>
-        <el-button type="primary" v-on:click="onRegister()" >注册</el-button>
+        <el-button type="primary" v-on:click="onRegister('registerForm')" >提交</el-button>
       </el-form>
     </div>
   </div>
@@ -19,9 +18,11 @@
 export default {
   data () {
     return {
-      user: {
+      register: {
         username: '',
-        password: ''
+        password: '',
+        captchaKey: '',
+        captchaCode: ''
       },
       rules: {
         username: [
@@ -35,17 +36,15 @@ export default {
     }
   },
   methods: {
-    onSubmit (formName) {
+    onRegister (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$router.push('index')
+          console.log(this.register.username)
+          this.$router.push('login')
         } else {
           return false
         }
       })
-    },
-    onRegister () {
-      this.$router.push('register')
     }
   }
 }
@@ -60,7 +59,7 @@ export default {
     background-position: center;
     background-size:100%;
   }
-  .login {
+  .reg {
     padding: 3% 3% 3% 3%;
     /*圆润*/
     -webkit-border-radius: 10px;
